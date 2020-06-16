@@ -10,17 +10,21 @@ const ContainerLoginPage = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 `
 const ContainerForm = styled.form`
     width: 90vw;
-    height: 23vh;
+    height: 28vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
 `
 const ButtonStyled = styled(Button)`
     height: 50px;
+    &&{
+        font-weight: bold;
+        color:black;
+        background-color: #5cb646;
+        }
 `
 const Titulo = styled.h4`
     margin-bottom: 15px;
@@ -30,33 +34,46 @@ const Logo = styled.img`
     height: 10vh;
 `
 const PStyled = styled.p`
-    margin: 10px;
+    margin-top: 5vh;
+`
+const Lab = styled.h1`
+    margin-top:14vh;
+    color:black;
+    margin-bottom: -12px;
+    font-size: 3em;
+    font-weight: normal;
 `
 
-const LoginPage = ()=>{
-    return(
+const Eats = styled.h1`
+    color: #5cb646;
+    font-size: 3em;
+`
+const LoginPage = () => {
+    return (
         <ContainerLoginPage>
-            <Logo src={logoLogin} alt="imagem"/>
+            <div>
+                <Lab>Labenu</Lab>
+                <Eats>Eats</Eats>
+            </div>
             <Titulo>Entrar</Titulo>
             <ContainerForm>
 
-                    <TextField
+                <TextField
                     label="E-mail"
                     placeholder="email@gmail.com"
                     variant="outlined"
                     required
-                    />
-                    <TextField
+                />
+                <TextField
                     label="PassWord"
                     placeholder="Minimo 6 caracteres"
                     variant="outlined"
                     required
-                    />
-                    <ButtonStyled
-                    variant="contained" 
-                    color="primary"
-                    >
-                        Entrar
+                />
+                <ButtonStyled
+                    variant="contained"
+                >
+                    Entrar
                     </ButtonStyled>
             </ContainerForm>
             <PStyled>Não possui cadastro? Clique Aqui</PStyled>
