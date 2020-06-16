@@ -4,6 +4,7 @@ import Footer from '../../../components/Footer'
 import styled from 'styled-components'
 import EditIcon from '@material-ui/icons/Edit';
 import IconButton from '@material-ui/core/IconButton';
+import { useHistory } from "react-router-dom";
 
 const Container = styled.div`
     width: 100vw;
@@ -88,7 +89,17 @@ const Valor = styled.h3`
 `
 
 const ProfilePage = (props) => {
+    const history = useHistory();
     const historicoVazio = false;
+
+    const goToEditAdress = () =>{
+        history.push("/profile/UpdateProfile");
+    }
+
+    const goToEditRegister = () =>{
+        history.push("/profile/UpdateAdress");
+    }
+
     return (
         <Container>
             <Header nomeDaPagina={'Meu Perfil'} />
@@ -99,7 +110,7 @@ const ProfilePage = (props) => {
                         <p> mail@email.com</p>
                         <p>  000.000.000-00</p>
                     </ResgiterContent>
-                    <EditButtom>
+                    <EditButtom onClick={goToEditRegister}>
                         <EditIcon />
                     </EditButtom>
                 </UpdateRegistrationContainer>
@@ -111,7 +122,7 @@ const ProfilePage = (props) => {
                         <p>Rua piriripororo, 123</p>
                     </AdressContent>
                     <EditButtom>
-                        <EditIcon />
+                        <EditIcon onClick={goToEditAdress}/>
                     </EditButtom>
                 </UpdateAdressContainer>
                 <OrderHistory>

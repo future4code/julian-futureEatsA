@@ -10,6 +10,7 @@ import SearchPage from '../pages/Home/SearchPage'
 import ProfilePage from '../pages/Profile/ProfilePage'
 import UpdateProfilePage from '../pages/Profile/UpdateProfilePage'
 import AddressPage from '../pages/SignUpPage/AddressPage'
+import UpdateAdressPage from '../pages/Profile/UpdateAdressPage'
 
 const Routes = ()=>{
     return(
@@ -44,6 +45,9 @@ const Routes = ()=>{
           </Route>
           <Route exact path='/profile/UpdateProfile'>
             <UpdateProfilePage/>
+          </Route>
+          <Route exact path='/profile/UpdateAdress'>
+            <UpdateAdressPage/>
           </Route>
         </Switch>
       </BrowserRouter>
