@@ -9,6 +9,7 @@ import RestaurantPage from '../pages/Home/RestaurantPage'
 import SearchPage from '../pages/Home/SearchPage'
 import ProfilePage from '../pages/Profile/ProfilePage'
 import UpdateProfilePage from '../pages/Profile/UpdateProfilePage'
+import AddressPage from '../pages/SignUpPage/AddressPage'
 
 const Routes = ()=>{
     return(
@@ -22,6 +23,9 @@ const Routes = ()=>{
           </Route>
           <Route exact path='/SignUp'>
             <SignUpPage/>
+          </Route>
+          <Route exact path='/Address'>
+            <AddressPage/>
           </Route>
           <Route exact path='/cart'>
             <CartPage/>
