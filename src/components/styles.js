@@ -18,6 +18,7 @@ box-shadow: inset 0 0 20px 3px #00000012;
 background-color:white;
 border-bottom: 1px solid #0000001e;
 display:grid;
+z-index: 1;
 grid-template-columns: repeat(3, 1fr);
 width:100%;
 height: 10vh;

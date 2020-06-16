@@ -39,10 +39,10 @@ const Routes = ()=>{
           <Route exact path='/home/Search'>
             <SearchPage/>
           </Route>
-          <Route exact path='/profile/'>
+          <Route exact path='/profile'>
             <ProfilePage/>
           </Route>
-          <Route exact path='profile/UpdateProfile'>
+          <Route exact path='/profile/UpdateProfile'>
             <UpdateProfilePage/>
           </Route>
         </Switch>

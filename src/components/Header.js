@@ -10,7 +10,6 @@ const Header = () => {
                 <ArrowBackIosIcon />
             </IconButton>
             <TituloHeader>nomeDaPagina</TituloHeader>
-
         </ContainerHeader>
     )
 }
