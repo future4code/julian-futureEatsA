@@ -1,16 +1,15 @@
 import React from 'react';
-import {Bar, Texto, Form, Input} from './style';
-import BackButton from '@material-ui/icons/ArrowBackIos';
-import Button from  '@material-ui/core/Button';
+import Header from '../../../components/Header'
+import {ContainerAddress, Texto, Form, Input, Botao} from './style';
+
+
 
 const Address = () => {
   return(
     <div>
-      <Bar>
-        <BackButton/>
-      </Bar>  
-      
-      <Form>
+      <ContainerAddress>
+        <Header/>
+       <Form>
           <Texto>Meu Endereço</Texto>
           
                 <Input
@@ -67,8 +66,9 @@ const Address = () => {
                 required
                 />
 
-             <Button variant="contained" color="primary">Salvar</Button>
+             <Botao variant="contained" color="primary" size="large">Salvar</Botao>
          </Form>
+      </ContainerAddress>       
     </div>
   )
 }

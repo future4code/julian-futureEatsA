@@ -1,47 +1,53 @@
 import styled from 'styled-components';
 import TextField from '@material-ui/core/TextField';
-
+import Button from  '@material-ui/core/Button';
 
 
 export const Input = styled(TextField)`
   &&{
-    margin: 7px;
-    :valid {
-     color: green;
-   }
-
-   :invalid {
-     color: red;
-   }
+    margin: 8px;
+    width:332px;
     
   }
 `
+export const Botao = styled(Button)`
+  background-color: #5cb646;
+  color: black;
+  font-size: 16px;
+  margin-top: 1rem;
+  margin-left: 10px;
+  margin-right: 10px;
+`
 
-export const Bar = styled.div`
-  height: 50px;
-  border-bottom:1px solid gray;
+
+export const ContainerSignUp = styled.div`
+  width:100vw;
+  height: 100vh;
+  display:flex;
+  flex-direction: column;
+  align-items:center;
 `
 
 export const LogoEats = styled.div`
   display: flex;
   justify-content:center;
-  margin-top: 20px;
+  margin-top: 3rem;
 `
 export const ImagemLogo = styled.img`
-  width: 20vw;
-  height: 10vh;
+  width: 100%;
+  height: 100%;
 `
 export const Texto = styled.p`
   text-align: center;
-  margin-top: 1rem;
-  padding-bottom:1rem;
+  margin-top: 3rem;
+  padding-bottom:2rem;
   font-size: 16px;
 `
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
   justify-content:center;
-  margin-left: 2rem;
-  margin-right: 2rem;
+  margin-left: 16px;
+  margin-right: 16px;
 
  `
