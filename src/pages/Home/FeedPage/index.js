@@ -49,7 +49,7 @@ const ContainerPrecoDinheiro = styled.div`
 const Feed = ()=>{
     return(
         <ContainerFeed>
-            <Header/>
+            <Header nomeDaPagina={'Labenu Eats'}/>
             <TextFieldStyled
             placeholder="Restaurante"
             variant="outlined" 
