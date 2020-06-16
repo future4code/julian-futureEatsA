@@ -1,8 +1,7 @@
 import React from 'react';
-import {Header} from '../../components/Header'
-import Button from  '@material-ui/core/Button';
+import Header from '../../components/Header'
 import logo from '../img/logo.png';
-import {Bar, LogoEats, ImagemLogo, Texto, Form, Input} from './style';
+import {ContainerSignUp, LogoEats, ImagemLogo, Texto, Form, Input, Botao} from './style';
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import IconButton from "@material-ui/core/IconButton";
@@ -12,7 +11,7 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import FormControl from "@material-ui/core/FormControl";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
-import BackButton from '@material-ui/icons/ArrowBackIos';
+
 
     const useStyles = makeStyles(theme => ({
     
@@ -23,7 +22,7 @@ import BackButton from '@material-ui/icons/ArrowBackIos';
         marginTop: theme.spacing(3)
       },
       textField: {
-        width: "36ch"
+        width: "37ch"
       }
     }));
 
@@ -53,9 +52,9 @@ import BackButton from '@material-ui/icons/ArrowBackIos';
    
       return(
           <div>
-              <Bar>
-               <BackButton/>
-              </Bar>
+              <ContainerSignUp>
+               <Header/>
+            
               
               <LogoEats>
                 <ImagemLogo src={logo} alt="future-eats" />
@@ -158,11 +157,11 @@ import BackButton from '@material-ui/icons/ArrowBackIos';
               />
             </FormControl>
 
-            <Button variant="contained" color="primary">Criar</Button>
+            <Botao variant="contained" color="primary" size='large'>Criar</Botao>
 
           </Form>
           
-
+        </ContainerSignUp>
       </div>
   )
 }
