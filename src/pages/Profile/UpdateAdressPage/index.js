@@ -1,0 +1,75 @@
+import React from 'react'
+import styled from 'styled-components'
+import Header from '../../../components/Header'
+import TextField from '@material-ui/core/TextField'
+import Button from '@material-ui/core/Button'
+
+const ContainerUpdateProfile = styled.div`
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+`
+const FormStyled = styled.form`
+    width: 100%;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    height: 500px;
+    justify-content: space-around;
+`
+const TextFieldStyled = styled(TextField)`
+    width: 90%;
+`
+const ButtonStyled = styled(Button)`
+    width: 90%;
+    height: 42px;
+    &&{
+        background-color: #5cb646;
+        :focus{
+            background-color: #5cb646;
+        }
+    }
+
+`
+const UpdateAdressPage = ()=>{
+    return(
+        <ContainerUpdateProfile>
+            <Header/>
+            <FormStyled>
+                <TextFieldStyled
+                    variant="outlined"
+                    label="Logadouro"
+                    required
+                    />
+                <TextFieldStyled
+                    variant="outlined"
+                    label="número"
+                    type='number'
+                    required
+                    />
+                <TextFieldStyled
+                    variant="outlined"
+                    label="complemento"
+                    />
+                <TextFieldStyled
+                    variant="outlined"
+                    label="Bairro"
+                    required
+                    />
+                <TextFieldStyled
+                    variant="outlined"
+                    label="Cidade"
+                    required
+                    />
+                <TextFieldStyled
+                    variant="outlined"
+                    label="Estado"
+                    required
+                    />
+                <ButtonStyled><b>Salvar</b></ButtonStyled>
+            </FormStyled>
+        </ContainerUpdateProfile>
+    )
+}
+
+export default UpdateAdressPage
