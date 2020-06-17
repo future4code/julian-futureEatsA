@@ -11,12 +11,14 @@ export const Input = styled(TextField)`
   }
 `
 export const Botao = styled(Button)`
-  background-color: #5cb646;
+  &&{
+    background-color: #5cb646;
   color: black;
   font-size: 16px;
   margin-top: 1rem;
   margin-left: 10px;
   margin-right: 10px;
+  }
 `
 
 
@@ -39,9 +41,10 @@ export const ImagemLogo = styled.img`
 `
 export const Texto = styled.p`
   text-align: center;
-  margin-top: 3rem;
-  padding-bottom:2rem;
+  margin-top: 2vh;
+  padding-bottom:2vh;
   font-size: 16px;
+  font-weight: bold;
 `
 export const Form = styled.form`
   display: flex;
@@ -51,4 +54,15 @@ export const Form = styled.form`
   margin-right: 16px;
 
  `
+export const Lab = styled.h1`
+margin-top:2vh;
+color:black;
+margin-bottom: -12px;
+font-size: 3em;
+font-weight: normal;
+`
 
+export const Eats = styled.h1`
+color: #5cb646;
+font-size: 3em;
+`
