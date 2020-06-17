@@ -83,7 +83,7 @@ export const Card = styled.div`
    height:112px;
    border:1px solid #b8b8b8;
    border-radius:8px;
-   overflow-y: hidden;
+   
    
 `
 export const ImgFood = styled.img`
