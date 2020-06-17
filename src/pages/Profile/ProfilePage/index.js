@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import { useHistory } from "react-router-dom";
+import axios from "axios"
+
 import Header from '../../../components/Header'
 import Footer from '../../../components/Footer'
 import styled from 'styled-components'
 import EditIcon from '@material-ui/icons/Edit';
 import IconButton from '@material-ui/core/IconButton';
-import { useHistory } from "react-router-dom";
 
 const Container = styled.div`
     width: 100vw;
@@ -90,15 +92,61 @@ const Valor = styled.h3`
 
 const ProfilePage = (props) => {
     const history = useHistory();
-    const historicoVazio = false;
-
-    const goToEditAdress = () =>{
+    const [historicoVazio, setHistoricoVazio] = useState(true);
+    const [profileInfo, setProfileInfo] = useState({})
+    const [orderHistory, setOrderHistory] = useState([])
+    const goToEditAdress = () => {
         history.push("/profile/UpdateProfile");
     }
 
-    const goToEditRegister = () =>{
+    const goToEditRegister = () => {
         history.push("/profile/UpdateAdress");
     }
+
+    const pegaPerfil = () => {
+        axios
+            .get('https://us-central1-missao-newton.cloudfunctions.net/futureEatsA/profile',
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'auth': `${localStorage.token}`
+                    }
+                }
+            )
+            .then((response) => {
+                setProfileInfo(response.data.user)
+            })
+            .catch((error) => {
+                alert(error.message)
+            })
+
+        axios
+            .get('https://us-central1-missao-newton.cloudfunctions.net/futureEatsA/orders/history',
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'auth': `${localStorage.token}`
+                    }
+                }
+            )
+            .then((response) => {
+                console.log(response.data.orders)
+                setOrderHistory(response.data.orders)
+                if(orderHistory.length !== 0){
+                    setHistoricoVazio(false)
+                }
+            })
+            .catch((error) => {
+                alert(error.message)
+            })
+
+    }
+
+    useEffect(() => {
+        pegaPerfil()
+    }, [])
+
+
 
     return (
         <Container>
@@ -106,9 +154,9 @@ const ProfilePage = (props) => {
             <ContentContainer>
                 <UpdateRegistrationContainer>
                     <ResgiterContent>
-                        <p>Nome piriri pororor </p>
-                        <p> mail@email.com</p>
-                        <p>  000.000.000-00</p>
+                        <p>{profileInfo.name}</p>
+                        <p>{profileInfo.email}</p>
+                        <p>{profileInfo.cpf}</p>
                     </ResgiterContent>
                     <EditButtom onClick={goToEditRegister}>
                         <EditIcon />
@@ -119,10 +167,10 @@ const ProfilePage = (props) => {
                         <AdressLabel>
                             Endereço cadastrado
                         </AdressLabel>
-                        <p>Rua piriripororo, 123</p>
+                        <p>{profileInfo.address}</p>
                     </AdressContent>
                     <EditButtom>
-                        <EditIcon onClick={goToEditAdress}/>
+                        <EditIcon onClick={goToEditAdress} />
                     </EditButtom>
                 </UpdateAdressContainer>
                 <OrderHistory>
@@ -130,24 +178,24 @@ const ProfilePage = (props) => {
                     {historicoVazio ? (
                         <p>Você não realizou nenhum pedido</p>
                     ) : (
-                        <>
-                        <CardContainer>
-                            <Restaurante>Bullguer Vila Madalena</Restaurante>
-                            <p>23 de outubro de 2019</p>
-                            <Valor>SUBTOTAL R$65,00</Valor>
-                        </CardContainer>
-                        <CardContainer>
-                        <Restaurante>Bullguer Vila Madalena</Restaurante>
-                        <p>23 de outubro de 2019</p>
-                        <Valor>SUBTOTAL R$65,00</Valor>
-                    </CardContainer>
-                    <CardContainer>
-                            <Restaurante>Bullguer Vila Madalena</Restaurante>
-                            <p>23 de outubro de 2019</p>
-                            <Valor>SUBTOTAL R$65,00</Valor>
-                        </CardContainer>
-                    </>
-                    )}
+                            <>
+                                <CardContainer>
+                                    <Restaurante>Bullguer Vila Madalena</Restaurante>
+                                    <p>23 de outubro de 2019</p>
+                                    <Valor>SUBTOTAL R$65,00</Valor>
+                                </CardContainer>
+                                <CardContainer>
+                                    <Restaurante>Bullguer Vila Madalena</Restaurante>
+                                    <p>23 de outubro de 2019</p>
+                                    <Valor>SUBTOTAL R$65,00</Valor>
+                                </CardContainer>
+                                <CardContainer>
+                                    <Restaurante>Bullguer Vila Madalena</Restaurante>
+                                    <p>23 de outubro de 2019</p>
+                                    <Valor>SUBTOTAL R$65,00</Valor>
+                                </CardContainer>
+                            </>
+                        )}
                 </OrderHistory>
             </ContentContainer>
             <Footer />
