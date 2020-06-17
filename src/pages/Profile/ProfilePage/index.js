@@ -130,10 +130,11 @@ const ProfilePage = (props) => {
                 }
             )
             .then((response) => {
-                console.log(response.data.orders)
                 setOrderHistory(response.data.orders)
-                if(orderHistory.length !== 0){
+                if (response.data.orders.length !== 0) {
                     setHistoricoVazio(false)
+                } else {
+                    setHistoricoVazio(true)
                 }
             })
             .catch((error) => {
@@ -145,7 +146,6 @@ const ProfilePage = (props) => {
     useEffect(() => {
         pegaPerfil()
     }, [])
-
 
 
     return (
@@ -179,21 +179,57 @@ const ProfilePage = (props) => {
                         <p>Você não realizou nenhum pedido</p>
                     ) : (
                             <>
-                                <CardContainer>
-                                    <Restaurante>Bullguer Vila Madalena</Restaurante>
-                                    <p>23 de outubro de 2019</p>
-                                    <Valor>SUBTOTAL R$65,00</Valor>
-                                </CardContainer>
-                                <CardContainer>
-                                    <Restaurante>Bullguer Vila Madalena</Restaurante>
-                                    <p>23 de outubro de 2019</p>
-                                    <Valor>SUBTOTAL R$65,00</Valor>
-                                </CardContainer>
-                                <CardContainer>
-                                    <Restaurante>Bullguer Vila Madalena</Restaurante>
-                                    <p>23 de outubro de 2019</p>
-                                    <Valor>SUBTOTAL R$65,00</Valor>
-                                </CardContainer>
+                                {orderHistory.map((pedido) => {
+                                    let data = new Date(pedido.createdAt)
+                                    let mes = null
+                                    console.log(data.getMonth())
+                                    switch (data.getMonth()) {
+                                        case 0:
+                                            mes = 'Janeiro'
+                                            break;
+                                        case 1:
+                                            mes = 'Fevereiro'
+                                            break;
+                                        case 2:
+                                            mes = 'Março'
+                                            break;
+                                        case 3:
+                                            mes = 'Abril'
+                                            break;
+                                        case 4:
+                                            mes = 'Maio'
+                                            break;
+                                        case 5:
+                                            mes = 'Junho'
+                                            break;
+                                        case 6:
+                                            mes = 'Julho'
+                                            break;
+                                        case 7:
+                                            mes = 'Agosto'
+                                            break;
+                                        case 8:
+                                            mes = 'Setembo'
+                                            break;
+                                        case 9:
+                                            mes = 'Outubro'
+                                            break;
+                                        case 10:
+                                            mes = 'Novembro'
+                                            break;
+                                        case 11:
+                                            mes = 'Dezembro'
+                                            break;
+                                    }
+                                    return (
+                                        <CardContainer>
+                                            <Restaurante>{pedido.restaurantName}</Restaurante>
+                                    <p>{data.getDate()} de {mes} de {data.getFullYear()}</p>
+                                            <Valor>SUBTOTAL R${pedido.totalPrice}</Valor>
+                                        </CardContainer>
+                                    )
+                                })}
+
                             </>
                         )}
                 </OrderHistory>
