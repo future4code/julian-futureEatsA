@@ -8,6 +8,8 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia'
 import CardContent from '@material-ui/core/CardContent'
+import ActiveOrder from './ActiveOrder'
+
 
 const ContainerFeed = styled.div`
     width: 100vw;
@@ -108,6 +110,7 @@ const Feed = ()=>{
                     </ContainerPrecoDinheiro>
                 </CardContent>
             </CardStyled>
+            <ActiveOrder></ActiveOrder>
             <Footer/>
         </ContainerFeed>
     )
