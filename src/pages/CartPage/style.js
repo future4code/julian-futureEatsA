@@ -1,12 +1,8 @@
 import styled from 'styled-components';
 
-export const CartContainer = styled.div`
-width: 100vw; 
-height: 100vh;
-flex-direction: column;
-align-items:center;
-`
 export const CardAdress = styled.div`
+display: flex;
+flex-direction: column;
 width: 100vw; 
 height: 76px;
 background-color: #eeeeee;
@@ -20,11 +16,11 @@ export const ButtonConfirm = styled.div`
 display: flex;
 justify-content: center;
 align-items: center;
-width: 328px;
+width: 90vw;
 height: 42px;
 border-radius: 2px;
 background-color: rgba(92, 182, 70, 0.5);
-margin-left: 16px;
+align-self: center;
 `
 export const DeliveryAddress = styled.div`
 color: #000000;
