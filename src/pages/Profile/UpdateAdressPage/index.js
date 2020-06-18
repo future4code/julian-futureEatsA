@@ -3,8 +3,10 @@ import styled from 'styled-components'
 import Header from '../../../components/Header'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
+import axios from 'axios';
+import {useHistory} from 'react-router-dom';
 import {useForm} from '../../../hooks/useForm'
-import axios from 'axios'
+
 
 const ContainerUpdateProfile = styled.div`
     display: flex; 
@@ -34,6 +36,7 @@ const ButtonStyled = styled(Button)`
 
 `
 const UpdateAdressPage = ()=>{
+
     const {form, onChange} = useForm({rua: '', numero: '', complemento: '', bairro: '', cidade: '', estado: ''})
     const token = localStorage.getItem('token')
 
@@ -67,6 +70,7 @@ const UpdateAdressPage = ()=>{
     const handleSubmit = event => {
         event.preventDefault();
       };
+
     return(
         <ContainerUpdateProfile>
             <Header/>
