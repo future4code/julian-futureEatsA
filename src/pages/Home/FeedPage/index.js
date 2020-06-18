@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import Header from '../../../components/Header'
 import Footer from '../../../components/Footer'
@@ -11,7 +11,7 @@ import CardContent from '@material-ui/core/CardContent'
 import ActiveOrder from './ActiveOrder'
 import Button from '@material-ui/core/Button'
 import axios from 'axios'
-import {useHistory} from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 
 const ContainerFeed = styled.div`
@@ -53,40 +53,64 @@ const ContainerPrecoDinheiro = styled.div`
     justify-content: space-between;
 `
 
-const Feed = ()=>{  
+const Feed = () => {
     const token = localStorage.getItem('token')
     const history = useHistory()
     const [restaurants, setRestaurants] = useState([])
-    useEffect(()=>{
+    const [mostraPedido, setMostraPedido] = useState(false)
+
+    useEffect(() => {
         axios.get('https://us-central1-missao-newton.cloudfunctions.net/futureEatsA/restaurants', {
             headers: {
                 auth: token,
                 'Content-Type': 'application/json'
             }
-        }).then(response=>{
+        }).then(response => {
             console.log(response.data.restaurants)
             setRestaurants(response.data.restaurants)
-        }).catch(error=>{
+        }).catch(error => {
             console.log(error)
         })
-    },[])
+        verificaPedido()
+    }, [])
 
-    const IrparaRestaurantsDetails = (id)=>{
+    const IrparaRestaurantsDetails = (id) => {
         history.push(`/home/Restaurant/${id}`)
     }
-    return(
+
+    const verificaPedido = () => {
+        axios
+            .get('https://us-central1-missao-newton.cloudfunctions.net/futureEatsA/active-order',
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'auth': `${localStorage.token}`
+                    }
+                }
+            )
+            .then((response) => {
+                if (response.data.order !== null) {
+                    setMostraPedido(true)
+                }
+            })
+            .catch((error) => {
+                alert(error.message)
+            })
+    }
+
+    return (
         <ContainerFeed>
-            <Header nomeDaPagina={'Labenu Eats'}/>
+            <Header nomeDaPagina={'Labenu Eats'} />
             <TextFieldStyled
-            placeholder="Restaurante"
-            variant="outlined" 
-            InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <SearchIcon/>
-                  </InputAdornment>
-                ),
-              }}
+                placeholder="Restaurante"
+                variant="outlined"
+                InputProps={{
+                    startAdornment: (
+                        <InputAdornment position="start">
+                            <SearchIcon />
+                        </InputAdornment>
+                    ),
+                }}
             />
             <ScrollVertical>
                 <ButtonStyled>Hamburguer</ButtonStyled>
@@ -96,25 +120,25 @@ const Feed = ()=>{
                 <ButtonStyled>alguma coisa</ButtonStyled>
                 <ButtonStyled>Alguma coisa</ButtonStyled>
             </ScrollVertical>
-            {restaurants.map(restaurant=>{
-                return(
-                    <CardStyled onClick={()=>{IrparaRestaurantsDetails(restaurant.id)}}>
+            {restaurants.map(restaurant => {
+                return (
+                    <CardStyled onClick={() => { IrparaRestaurantsDetails(restaurant.id) }}>
                         <CardMediaStyled
-                        image={restaurant.logoUrl}
-                        title="Contemplative Reptile"
+                            image={restaurant.logoUrl}
+                            title="Contemplative Reptile"
                         />
                         <CardContent>
                             <p>{restaurant.name}</p>
                             <ContainerPrecoDinheiro>
-                            <p>{restaurant.deliveryTime} min</p>
-                            <p>frete R${restaurant.shipping}.00</p>
+                                <p>{restaurant.deliveryTime} min</p>
+                                <p>frete R${restaurant.shipping}.00</p>
                             </ContainerPrecoDinheiro>
                         </CardContent>
                     </CardStyled>
                 )
             })}
-           
-            <Footer/>
+            {mostraPedido ? (<ActiveOrder />) : (<></>)}
+            <Footer />
         </ContainerFeed>
     )
 }
