@@ -5,7 +5,7 @@ import Footer from '../../components/Footer'
 import { CartContainer, CardAdress, TitleAdress, DeliveryAddress, ItensCartContainer, Frete, SubTotalContent, ValueTotal, FormaDePagamento, ButtonConfirm } from './style'
 import { useHistory } from 'react-router-dom'
 
-const CartPage = ()=>{
+const CartPage = props =>{
     const history = useHistory();
     const [value, setValue] = useState('Dinheiro');
 
@@ -15,7 +15,7 @@ const CartPage = ()=>{
 
     return(
         <CartContainer>
-            <Header />
+            <Header nomeDaPagina={'Meu carrinho'}/>
             <CardAdress>
                 <TitleAdress>Endereço de entrega </TitleAdress>
                 <DeliveryAddress>

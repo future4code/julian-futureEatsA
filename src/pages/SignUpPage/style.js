@@ -54,7 +54,6 @@ export const Form = styled.form`
   margin-right: 16px;
 
  `
-
 export const Lab = styled.h1`
 margin-top:2vh;
 color:black;
