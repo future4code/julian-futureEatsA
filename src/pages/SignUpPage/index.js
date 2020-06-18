@@ -13,45 +13,45 @@ import {useStyles} from './useStyles';
 import {useForm} from '../../hooks/useForm';
 import {useHistory} from 'react-router-dom';
 import axios from 'axios';
+import {cpfMask} from '../../components/mask'
 
 
 
-const SignUpPage = () => {
-  const history = useHistory();
-  const classes = useStyles();
+  const SignUpPage = () => {
+    const history = useHistory();
+    const classes = useStyles();
 
-  const [values, setValues] = React.useState({
-    password: "",
-    showPassword: false
-  });
+    const [values, setValues] = React.useState({
+      password: "",
+      showPassword: false
+    });
 
   // const handleChange = prop => event => {
   //   setValues({ ...values, [prop]: event.target.value });
   // };
 
-  const handleClickShowPassword = () => {
-    setValues({ ...values, showPassword: !values.showPassword });
-  };
+    const handleClickShowPassword = () => {
+      setValues({ ...values, showPassword: !values.showPassword });
+    };
 
-  const handleMouseDownPassword = event => {
-    event.preventDefault();
-  };
-
-
-  const { form, onChange } = useForm({
-     name: "", 
-     email: "",
-     cpf: "",
-     password: "",
-     confirmar:"",
-
-    });
+    const handleMouseDownPassword = event => {
+      event.preventDefault();
+    };
 
     const handleInputChange = event => {
-        const { name, value } = event.target;
-        onChange(name, value);
+      const { name, value } = event.target;
+      onChange(name, value);
     };
-    
+
+
+    const { form, onChange } = useForm({
+      name: "", 
+      email: "",
+      cpf: "",
+      password: "",
+      confirmar:"",
+      });
+
 
     const teste = (event) => {
      event.preventDefault();
@@ -62,7 +62,6 @@ const SignUpPage = () => {
         email: form.email,
         cpf: form.cpf,
         password: form.password,
-        
       }
       
       axios
@@ -75,15 +74,12 @@ const SignUpPage = () => {
         .catch((error) => {
           alert(error.message)
         })
-    }
-
-
-
-  return (
-    <div>
-      <ContainerSignUp>
+      };
+    
+     return (
+      <div>
+        <ContainerSignUp>
         <Header />
-
 
         <div>
           <Lab>Labenu</Lab>
@@ -120,10 +116,11 @@ const SignUpPage = () => {
           />
 
           <Input
+            maxLength='14'
             name='cpf'
             type="text"
             onChange={handleInputChange}
-            value={form.cpf}
+            value={cpfMask(form.cpf)}
             placeholder="000.000.000-00"
             label="CPF"
             variant="outlined"
@@ -193,9 +190,7 @@ const SignUpPage = () => {
           </FormControl>
 
           <Botao type='submit' variant="contained" size='large'>Criar</Botao>
-
         </Form>
-
       </ContainerSignUp>
     </div>
   )

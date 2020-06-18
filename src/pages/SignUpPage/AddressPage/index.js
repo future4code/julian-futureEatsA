@@ -49,11 +49,11 @@ const Address = () => {
     <div>
       <ContainerAddress>
         <Header />
-        <Form >
+         <Form >
           <Texto>Meu Endereço</Texto>
+         
           <Input
             type="text"
-            onChange={''}
             placeholder="Rua/ Av."
             label="Logradouro"
             variant="outlined"
@@ -62,9 +62,9 @@ const Address = () => {
             value={form.rua}
             onChange={handleInputChange}
           />
+
           <Input
             type="text"
-            onChange={''}
             placeholder="Número"
             label="Número"
             variant="outlined"
@@ -73,9 +73,9 @@ const Address = () => {
             value={form.numero}
             onChange={handleInputChange}
           />
+
           <Input
             type="text"
-            onChange={''}
             placeholder="Apto./ Bloco"
             label="Complemento"
             variant="outlined"
@@ -84,9 +84,9 @@ const Address = () => {
             value={form.complemento}
             onChange={handleInputChange}
           />
+
           <Input
             type="text"
-            onChange={''}
             placeholder="Bairro"
             label="Bairro"
             variant="outlined"
@@ -95,9 +95,9 @@ const Address = () => {
             value={form.bairro}
             onChange={handleInputChange}
           />
+
           <Input
             type="text"
-            onChange={''}
             placeholder="Cidade"
             label="Cidade"
             variant="outlined"
@@ -106,9 +106,9 @@ const Address = () => {
             value={form.cidade}
             onChange={handleInputChange}
           />
+
           <Input
             type="text"
-            onChange={''}
             placeholder="Estado"
             label="Estado"
             variant="outlined"
@@ -117,7 +117,9 @@ const Address = () => {
             value={form.estado}
             onChange={handleInputChange}
           />
+
           <Botao onClick={onClickSalvar} variant="contained" color="primary" size="large">Salvar</Botao>
+          
         </Form>
       </ContainerAddress>
     </div>

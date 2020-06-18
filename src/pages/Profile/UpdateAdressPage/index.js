@@ -3,6 +3,10 @@ import styled from 'styled-components'
 import Header from '../../../components/Header'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
+import axios from 'axios';
+import {useHistory} from 'react-router-dom';
+
+
 
 const ContainerUpdateProfile = styled.div`
     display: flex; 
@@ -32,13 +36,28 @@ const ButtonStyled = styled(Button)`
 
 `
 const UpdateAdressPage = ()=>{
+  const history = useHistory();
+  
+
+    const getFullAddress = () => {
+        axios
+        .get('https://us-central1-missao-newton.cloudfunctions.net/futureEatsA/profile/address', {
+            headers: {
+                'auth': `${localStorage.token}`
+            }
+        }).then((response) => {
+            console.log(response.data)
+        })
+    }
+
+
     return(
         <ContainerUpdateProfile>
             <Header/>
             <FormStyled>
                 <TextFieldStyled
                     variant="outlined"
-                    label="Logadouro"
+                    label="Logradouro"
                     required
                     />
                 <TextFieldStyled
