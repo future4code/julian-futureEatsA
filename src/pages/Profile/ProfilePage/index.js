@@ -93,11 +93,11 @@ const ProfilePage = (props) => {
     const historicoVazio = false;
 
     const goToEditAdress = () =>{
-        history.push("/profile/UpdateProfile");
+        history.push("/profile/UpdateAdress");
     }
 
     const goToEditRegister = () =>{
-        history.push("/profile/UpdateAdress");
+        history.push("/profile/UpdateProfile");
     }
 
     return (

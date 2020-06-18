@@ -14,7 +14,6 @@ import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
 
 const useStyles = makeStyles(theme => ({
-
   margin: {
     margin: theme.spacing(1)
   },
@@ -25,7 +24,6 @@ const useStyles = makeStyles(theme => ({
     width: "37ch"
   }
 }));
-
 
 const SignUpPage = () => {
 
@@ -47,15 +45,10 @@ const SignUpPage = () => {
     event.preventDefault();
   };
 
-
-
-
   return (
     <div>
       <ContainerSignUp>
         <Header />
-
-
         <div>
           <Lab>Labenu</Lab>
           <Eats>Eats</Eats>
