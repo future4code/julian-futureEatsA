@@ -36,19 +36,7 @@ const ButtonStyled = styled(Button)`
 
 `
 const UpdateAdressPage = ()=>{
-  const history = useHistory();
   
-
-    const getFullAddress = () => {
-        axios
-        .get('https://us-central1-missao-newton.cloudfunctions.net/futureEatsA/profile/address', {
-            headers: {
-                'auth': `${localStorage.token}`
-            }
-        }).then((response) => {
-            console.log(response.data)
-        })
-    }
 
 
     return(
