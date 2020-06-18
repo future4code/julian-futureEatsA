@@ -8,9 +8,11 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia'
 import CardContent from '@material-ui/core/CardContent'
+import ActiveOrder from './ActiveOrder'
 import Button from '@material-ui/core/Button'
 import axios from 'axios'
 import {useHistory} from 'react-router-dom'
+
 
 const ContainerFeed = styled.div`
     width: 100vw;
@@ -94,7 +96,6 @@ const Feed = ()=>{
                 <ButtonStyled>alguma coisa</ButtonStyled>
                 <ButtonStyled>Alguma coisa</ButtonStyled>
             </ScrollVertical>
-
             {restaurants.map(restaurant=>{
                 return(
                     <CardStyled onClick={()=>{IrparaRestaurantsDetails(restaurant.id)}}>
@@ -112,7 +113,7 @@ const Feed = ()=>{
                     </CardStyled>
                 )
             })}
-            
+           
             <Footer/>
         </ContainerFeed>
     )
