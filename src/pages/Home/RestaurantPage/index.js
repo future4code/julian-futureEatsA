@@ -2,7 +2,6 @@ import React from 'react';
 import Header from '../../../components/Header';
 import lanche from '../../img/bullguer.jpg';
 import maosanta from '../../img/mao-santa.jpg';
-
 import {ContainerRestaurant,
         MainPhoto,
         ImgRestaurant, 
@@ -22,7 +21,7 @@ import {ContainerRestaurant,
         PriceAndButton,
         BotaoRemover,
     } from './style'
-
+import Footer from '../../../components/Footer';
 
 const Restaurant = ()=>{
     return(
@@ -102,7 +101,7 @@ const Restaurant = ()=>{
                      </PriceAndButton>
                 </ContainerMainFood>  
                 </Card>
-
+                <Footer />
                 
               
             </ContainerRestaurant>

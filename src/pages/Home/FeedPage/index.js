@@ -46,7 +46,7 @@ const ContainerPrecoDinheiro = styled.div`
     display: flex; 
     justify-content: space-between;
 `
-const Feed = ()=>{
+const Feed = ()=>{  
     return(
         <ContainerFeed>
             <Header nomeDaPagina={'Labenu Eats'}/>

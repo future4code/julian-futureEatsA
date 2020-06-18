@@ -17,9 +17,13 @@ import {cpfMask} from '../../components/mask'
 
 
 
-  const SignUpPage = () => {
-    const history = useHistory();
-    const classes = useStyles();
+
+  
+
+const SignUpPage = () => {
+  const history = useHistory();
+  const classes = useStyles();
+
 
     const [values, setValues] = React.useState({
       password: "",
