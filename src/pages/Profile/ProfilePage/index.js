@@ -92,6 +92,9 @@ const Valor = styled.h3`
 
 const ProfilePage = (props) => {
     const history = useHistory();
+    const historicoVazio = false;
+
+  
     const [historicoVazio, setHistoricoVazio] = useState(true);
     const [profileInfo, setProfileInfo] = useState({})
     const [orderHistory, setOrderHistory] = useState([])
@@ -101,6 +104,7 @@ const ProfilePage = (props) => {
 
     const goToEditRegister = () => {
         history.push("/profile/UpdateAdress");
+
     }
 
     const pegaPerfil = () => {
