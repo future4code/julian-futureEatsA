@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
+import { useHistory } from "react-router-dom";
 
 
 const Container = styled.div`
@@ -28,6 +29,10 @@ const Eats = styled.h1`
 `
 
 const HomeScreenPage = () => {
+    const history = useHistory();
+    setInterval(() => {
+        history.push("/login")
+      }, 2000);
     return (
         <Container>
             <div>

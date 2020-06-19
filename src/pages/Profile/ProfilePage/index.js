@@ -97,12 +97,11 @@ const ProfilePage = (props) => {
     const [orderHistory, setOrderHistory] = useState([])
 
     const goToEditAdress = () => {
-        history.push("/profile/UpdateProfile");
+        history.push("/profile/UpdateAdress");
     }
 
     const goToEditRegister = () => {
-        history.push("/profile/UpdateAdress");
-
+        history.push("/profile/UpdateProfile");
     }
 
     const pegaPerfil = () => {
