@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button'
 import {useForm} from '../../../hooks/useForm'
 import axios from 'axios'
 import {useHistory} from 'react-router-dom'
+import { cpfMask } from '../../../components/mask'
 
 const ContainerUpdateProfile = styled.div`
     width: 100vw;
@@ -95,14 +96,12 @@ const UpdateProfile = ()=>{
                 required
                 />
                 <TextFieldStyled
+                maxLength='14'
                 name='cpf'
-                value={form.cpf}
+                value={cpfMask(form.cpf)}
                 onChange={onChangeForm}
                 variant="outlined"
                 label="CPF"
-                // inputProps={{
-                //     pattern:"/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/",
-                //     title:"Digite o CPF no formato nnn.nnn.nnn-nn"}}
                 required
                 />
                 <ButtonStyled type={'submit'} onClick={salvar}>

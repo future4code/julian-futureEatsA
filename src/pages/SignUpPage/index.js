@@ -53,13 +53,19 @@ const SignUpPage = () => {
       email: "",
       cpf: "",
       password: "",
-      confirmar:"",
+      confirm:"",
       });
 
 
-    const teste = (event) => {
+    const submit = (event) => {
      event.preventDefault();
       console.log(form)
+      const{password, confirm} = useForm
+      if(password !== confirm) {
+         alert("Senha incorreta")
+      }else{
+        history.push('/Address')
+      }
 
       const body = {
         name: form.name, 
@@ -90,7 +96,7 @@ const SignUpPage = () => {
           <Eats>Eats</Eats>
         </div>
 
-        <Form onSubmit={teste}>
+        <Form onSubmit={submit}>
           <Texto>Cadastrar</Texto>
 
           <Input
@@ -170,10 +176,10 @@ const SignUpPage = () => {
               Confirmar
               </InputLabel>
             <OutlinedInput
-              name="confirmar"
+              name="confirm"
               id="outlined-adornment-password"
               type={values.showPassword ? "text" : "password"}
-              value={form.confirmar}
+              value={form.confirm}
               placeholder="Minimo 6 caracteres"
               onChange={handleInputChange}
               required

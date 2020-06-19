@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import styled from 'styled-components'
 import Header from '../../../components/Header'
 import TextField from '@material-ui/core/TextField'
@@ -37,9 +37,11 @@ const ButtonStyled = styled(Button)`
 `
 const UpdateAdressPage = ()=>{
     const history = useHistory();
-    const {form, onChange} = useForm({rua: '', numero: '', complemento: '', bairro: '', cidade: '', estado: ''})
+     const {form, onChange} = useForm({rua:'', numero: '', complemento: '', bairro: '', cidade: '', estado: ''})
     const token = localStorage.getItem('token')
 
+    const[editarEndereco, setEditarEndereço] = useState({number:''})
+    
     const onChangeForm = event =>{
         const {name, value} = event.target
         onChange(name, value)
@@ -76,27 +78,33 @@ const UpdateAdressPage = ()=>{
             }
         })
         .then((response) => {
-            console.log(response.data)
+            setEditarEndereço(response.data.address)
             
         })
         .catch((error) => {
             console.log(error.message)
         })
-    }
-
+    };
+     
     useEffect(() => {
         getFullAddress()
     }, [])
-
+   
     const handleSubmit = event => {
         event.preventDefault();
       };
+
+      const teste = () => {
+        console.log(editarEndereco)
+      }
 
     return(
         <ContainerUpdateProfile>
             <Header/>
             <FormStyled onSubmit={handleSubmit}>
+                <button onClick={teste}>api</button>
                 <TextFieldStyled
+                    
                     name='rua'
                     value={form.rua}
                     onChange={onChangeForm}
