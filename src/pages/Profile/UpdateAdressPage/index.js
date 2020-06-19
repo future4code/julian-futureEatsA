@@ -37,7 +37,7 @@ const ButtonStyled = styled(Button)`
 `
 const UpdateAdressPage = ()=>{
     const history = useHistory();
-     const {form, onChange} = useForm({rua:'', numero: '', complemento: '', bairro: '', cidade: '', estado: ''})
+    const {form, onChange} = useForm({rua:'', numero: '', complemento: '', bairro: '', cidade: '', estado: ''})
     const token = localStorage.getItem('token')
 
     const[editarEndereco, setEditarEndereço] = useState({number:''})
@@ -78,15 +78,13 @@ const UpdateAdressPage = ()=>{
             }
         })
         .then((response) => {
-            //setEditarEndereço(response.data.address)
-            onChange('rua', `${response.data.address.street}`)
-            onChange('Número', `${response.data.address.number}`)
-            onChange('Complemento', `${response.data.address.complement}`)
-            onChange('Bairro', `${response.data.address.neighbourhood}`)
-            onChange('Cidade', `${response.data.address.city}`)
-            onChange('Estado', `${response.data.address.state}`)
-            
-            
+            form.rua = `${response.data.address.street}`
+            form.numero = `${response.data.address.number}`
+            form.complemento = `${response.data.address.complement}`
+            form.bairro = `${response.data.address.neighbourhood}`
+            form.cidade = `${response.data.address.city}`
+            form.estado = `${response.data.address.state}`
+            onChange('estado', `${response.data.address.state}`)       
         })
         .catch((error) => {
             console.log(error.message)
