@@ -60,13 +60,11 @@ const SignUpPage = () => {
     const submit = (event) => {
      event.preventDefault();
       console.log(form)
-      const{password, confirm} = useForm
-      if(password !== confirm) {
-         alert("Senha incorreta")
-      }else{
-        history.push('/Address')
-      }
 
+      if(form.password !== form.confirm) {
+        alert("Senha incorreta")
+
+     }else{
       const body = {
         name: form.name, 
         email: form.email,
@@ -84,6 +82,12 @@ const SignUpPage = () => {
         .catch((error) => {
           alert(error.message)
         })
+       
+ 
+     }
+      
+
+      
       };
     
      return (
