@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import styled from 'styled-components'
 import Header from '../../../components/Header'
 import TextField from '@material-ui/core/TextField'
@@ -36,7 +36,7 @@ const ButtonStyled = styled(Button)`
 
 `
 const UpdateAdressPage = ()=>{
-
+    const history = useHistory();
     const {form, onChange} = useForm({rua: '', numero: '', complemento: '', bairro: '', cidade: '', estado: ''})
     const token = localStorage.getItem('token')
 
@@ -65,7 +65,28 @@ const UpdateAdressPage = ()=>{
             console.log(error)
         })
         console.log(body)
+        history.push('/profile')
     }
+
+    const getFullAddress = () => {
+        axios
+        .get('https://us-central1-missao-newton.cloudfunctions.net/futureEatsA/profile/address', {
+            headers: {
+                'auth': token
+            }
+        })
+        .then((response) => {
+            console.log(response.data)
+            
+        })
+        .catch((error) => {
+            console.log(error.message)
+        })
+    }
+
+    useEffect(() => {
+        getFullAddress()
+    }, [])
 
     const handleSubmit = event => {
         event.preventDefault();
