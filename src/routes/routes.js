@@ -9,7 +9,7 @@ import RestaurantPage from '../pages/Home/RestaurantPage'
 import SearchPage from '../pages/Home/SearchPage'
 import ProfilePage from '../pages/Profile/ProfilePage'
 import UpdateProfilePage from '../pages/Profile/UpdateProfilePage'
-import AddressPage from '../pages/SignUpPage/AddressPage'
+import AddressPage from '../pages/AddressPage'
 import UpdateAdressPage from '../pages/Profile/UpdateAdressPage'
 
 const Routes = ()=>{

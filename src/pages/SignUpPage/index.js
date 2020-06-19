@@ -75,7 +75,12 @@ const SignUpPage = () => {
       }
       
       axios
-        .post('https://us-central1-missao-newton.cloudfunctions.net/futureEatsA/signup', body)
+        .post('https://us-central1-missao-newton.cloudfunctions.net/futureEatsA/signup', body,
+        {
+          headers: {
+              'Content-Type': 'application/json'
+          }
+      })
         .then((response) => {
           window.localStorage.setItem("token", response.data.token)
           history.push("/Address")
