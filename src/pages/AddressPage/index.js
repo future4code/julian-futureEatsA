@@ -1,9 +1,9 @@
 import React from 'react';
-import Header from '../../../components/Header'
+import Header from '../../components/Header'
 import { ContainerAddress, Texto, Form, Input, Botao } from './style';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
-import { useForm } from '../../../hooks/useForm';
+import { useForm } from '../../hooks/useForm';
 
 
 const Address = () => {

@@ -29,32 +29,26 @@ const ContainerContent = styled.div`
     padding-top:10%;
     padding-bottom:10%;
     transition: 0.5s;
-
 `
 
 const Titulo = styled.h3`
     color:white;
     font-weight: normal;
     transition: 0.5s;
-
 `
 
 const Restaurant = styled.h3`
     font-weight: normal;
     display: ${({ aparece }) => (aparece ? 'block' : 'none')};
     transition: 0.5s;
-
 `
 
 const Preco = styled.h3`
     display: ${({ aparece }) => (aparece ? 'block' : 'none')};
     transition: 0.5s;
-
 `
 
-const CloseIconContainer = styled.div`
-
-`
+const CloseIconContainer = styled.div``
 
 const ActiveOrder = () => {
     const [activeOrder, setActiveOrder] = useState({restaurantName:'', totalPrice:''})

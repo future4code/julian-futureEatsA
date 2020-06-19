@@ -74,10 +74,11 @@ const UpdateAdressPage = ()=>{
         axios
         .get('https://us-central1-missao-newton.cloudfunctions.net/futureEatsA/profile/address', {
             headers: {
-                'auth': token
+                'auth': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IlVrdmxjTjJ3RkwxdFEzYzJiNEliIiwibmFtZSI6Im1lbDMiLCJlbWFpbCI6Im1lbDNAZ21haWwuY29tIiwiY3BmIjoiNDQ0LjQ0NC40NDQtNDQ0IiwiaGFzQWRkcmVzcyI6ZmFsc2UsImlhdCI6MTU5MjU5MjU3OH0.KKvt6ZinPvqN904FzcmcTzzajEhI83Q6G0GtbELo9ok'
             }
         })
         .then((response) => {
+            console.log(response.data.address)
             form.rua = `${response.data.address.street}`
             form.numero = `${response.data.address.number}`
             form.complemento = `${response.data.address.complement}`
