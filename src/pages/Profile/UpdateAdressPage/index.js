@@ -78,7 +78,14 @@ const UpdateAdressPage = ()=>{
             }
         })
         .then((response) => {
-            setEditarEndereço(response.data.address)
+            //setEditarEndereço(response.data.address)
+            onChange('rua', `${response.data.address.street}`)
+            onChange('Número', `${response.data.address.number}`)
+            onChange('Complemento', `${response.data.address.complement}`)
+            onChange('Bairro', `${response.data.address.neighbourhood}`)
+            onChange('Cidade', `${response.data.address.city}`)
+            onChange('Estado', `${response.data.address.state}`)
+            
             
         })
         .catch((error) => {
