@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../../../components/Header';
-import lanche from '../../img/bullguer.jpg';
 import maosanta from '../../img/mao-santa.jpg';
 import {ContainerRestaurant,
         MainPhoto,
@@ -22,28 +21,45 @@ import {ContainerRestaurant,
         BotaoRemover,
     } from './style'
 import Footer from '../../../components/Footer';
+import Axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 const Restaurant = ()=>{
+  const [restaurant, setRestaurante] = useState()
+  
+  const params = useParams()
+
+  useEffect(()=>{
+    Axios.get(`https://us-central1-missao-newton.cloudfunctions.net/futureEatsA/restaurants/${params.idRestaurant}`, {
+      headers:{
+        auth: window.localStorage.getItem('token'),
+        'Content-Type': 'application/json'
+      }
+    }).then((response) => {
+      setRestaurante(response.data.restaurant)
+    })
+  }, [])
+
     return(
         <div>
-            <ContainerRestaurant>
+            {restaurant ? <ContainerRestaurant>
               <Header/>
               <MainPhoto>
-                  <ImgRestaurant src={lanche} alt=''/>
+                  <ImgRestaurant src={restaurant.logoUrl} alt=''/>
               </MainPhoto>
                 
                 <ContainerTitle>
-                  <Title>Bullguer Vila Mariana</Title>
-                  <Paragraph>Burguer</Paragraph>
+                  <Title>{restaurant.name}</Title>
+                  <Paragraph>{restaurant.category}</Paragraph>
                 </ContainerTitle>
 
                 <ContainerTime>
-                  <Paragraph>50 - 60 min </Paragraph>
-                  <Paragraph>Frete R$6,00</Paragraph>
+                  <Paragraph>{restaurant.deliveryTime}</Paragraph>
+                  <Paragraph>{restaurant.shipping}</Paragraph>
                 </ContainerTime>
 
                 <ContainerAddress>
-                 <Paragraph>R. Fradique Coutinho, 1136 - Vila Madalena</Paragraph>
+                 <Paragraph>{restaurant.address}</Paragraph>
                 </ContainerAddress>
 
                 <ContainerMainTitle>
@@ -104,7 +120,7 @@ const Restaurant = ()=>{
                 <Footer />
                 
               
-            </ContainerRestaurant>
+            </ContainerRestaurant>: <div>Carregando ...</div>}
            
         </div>
     )
