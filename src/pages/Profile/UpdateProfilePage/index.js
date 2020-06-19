@@ -24,6 +24,7 @@ const FormStyled = styled.form`
     align-items: center;
     height: 300px;
     justify-content: space-around;
+    padding-top:2vh;
 `
 const ButtonStyled = styled(Button)`
     width: 90%;
@@ -61,19 +62,16 @@ const UpdateProfile = ()=>{
                     "Content-Type": "application/json"
                 }
             }).then(response =>{
-            console.log(response)
-            // history.push('/profile')
         }).catch(error=>{
-            console.log(error)
+            alert(error)
         })
-        console.log(body)
     }
     const handleSubmit = event => {
         event.preventDefault();
       };
     return(
         <ContainerUpdateProfile>
-            <Header/>
+            <Header nomeDaPagina={"Editar"}/>
             <FormStyled onSubmit={handleSubmit}>
                 <TextFieldStyled
                 name='name'

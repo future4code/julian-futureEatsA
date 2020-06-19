@@ -91,12 +91,19 @@ const Feed = () => {
             .then((response) => {
                 if (response.data.order !== null) {
                     setMostraPedido(true)
+                } else {
+                    setMostraPedido(false)
                 }
             })
             .catch((error) => {
                 alert(error.message)
             })
     }
+
+    setInterval(() => {
+        verificaPedido()
+        console.log("setIntervalexec")
+      }, 120000);
 
     return (
         <ContainerFeed>

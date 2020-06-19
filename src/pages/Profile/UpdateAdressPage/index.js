@@ -15,10 +15,11 @@ const ContainerUpdateProfile = styled.div`
 `
 const FormStyled = styled.form`
     width: 100%;
+    padding-top:2vh;
     display: flex; 
     flex-direction: column;
     align-items: center;
-    height: 500px;
+    min-height: 80vh;
     justify-content: space-around;
 `
 const TextFieldStyled = styled(TextField)`
@@ -74,7 +75,7 @@ const UpdateAdressPage = ()=>{
         axios
         .get('https://us-central1-missao-newton.cloudfunctions.net/futureEatsA/profile/address', {
             headers: {
-                'auth': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IlVrdmxjTjJ3RkwxdFEzYzJiNEliIiwibmFtZSI6Im1lbDMiLCJlbWFpbCI6Im1lbDNAZ21haWwuY29tIiwiY3BmIjoiNDQ0LjQ0NC40NDQtNDQ0IiwiaGFzQWRkcmVzcyI6ZmFsc2UsImlhdCI6MTU5MjU5MjU3OH0.KKvt6ZinPvqN904FzcmcTzzajEhI83Q6G0GtbELo9ok'
+                'auth': token
             }
         })
         .then((response) => {
@@ -100,26 +101,17 @@ const UpdateAdressPage = ()=>{
         event.preventDefault();
       };
 
-      const teste = () => {
-        console.log(editarEndereco)
-      }
-
     return(
         <ContainerUpdateProfile>
-            <Header/>
+            <Header nomeDaPagina={"Endereço"}/>
             <FormStyled onSubmit={handleSubmit}>
-                <button onClick={teste}>api</button>
                 <TextFieldStyled
-                    
                     name='rua'
                     value={form.rua}
                     onChange={onChangeForm}
                     variant="outlined"
                     label="Rua"
                     required
-                    // inputProps={{
-                    //     pattern: 
-                    // }}
                     />
                 <TextFieldStyled
                     name='numero'

@@ -51,7 +51,7 @@ const Preco = styled.h3`
 const CloseIconContainer = styled.div``
 
 const ActiveOrder = () => {
-    const [activeOrder, setActiveOrder] = useState({restaurantName:'', totalPrice:''})
+    const [activeOrder, setActiveOrder] = useState({ restaurantName: '', totalPrice: '' })
     const [mostraTexto, setMostraTexto] = useState(true)
 
     const pegaPedido = () => {
@@ -65,8 +65,8 @@ const ActiveOrder = () => {
                 }
             )
             .then((response) => {
-                if(response.data.order !== null){
-                setActiveOrder(response.data.order)                    
+                if (response.data.order !== null) {
+                    setActiveOrder(response.data.order)
                 }
             })
             .catch((error) => {
@@ -78,18 +78,19 @@ const ActiveOrder = () => {
         pegaPedido()
     }, [])
 
-    const alteraStatus = () =>{
+    const alteraStatus = () => {
         setMostraTexto(!mostraTexto)
     }
 
     return (
         <Container aparece={mostraTexto}>
             {mostraTexto ? (<AccessTimeIcon style={{ fontSize: 40 }} />) : (<></>)}
-            
+
             <ContainerContent >
                 <Titulo aparece={mostraTexto}>Pedido em andamento</Titulo>
                 <Restaurant aparece={mostraTexto}>{activeOrder.restaurantName}</Restaurant>
                 <Preco aparece={mostraTexto}>SUBTOTAL R${activeOrder.totalPrice}</Preco>
+                <p>Entrega em: {parseInt(((activeOrder.expiresAt-Date.now())*0.0000166667), 10)} minutos</p>
             </ContainerContent>
             <CloseIconContainer onClick={alteraStatus}>
                 {mostraTexto ? (<CloseIcon style={{ fontSize: 30 }} />) : (<ExpandLessIcon style={{ fontSize: 30 }} />)}

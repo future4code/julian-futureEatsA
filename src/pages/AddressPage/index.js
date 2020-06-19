@@ -38,10 +38,11 @@ const Address = () => {
       )
       .then((response) => {
         alert('Endereço salvo com sucesso!')
+        localStorage.setItem("token", response.data.token)
         history.push("/home/feedPage");
       })
       .catch((error) => {
-        console.log(error)
+        console.log(error.message)
       })
   }
 
