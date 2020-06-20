@@ -79,7 +79,7 @@ export const Card = styled.div`
    margin-top: 8px;
    display: flex;
    flex-direction:row;
-   width: 93%;
+   width: 90%;
    height:112px;
    border:1px solid #b8b8b8;
    border-radius:8px;
@@ -87,6 +87,7 @@ export const Card = styled.div`
    
 `
 export const ImgFood = styled.img`
+  max-width: 30vw;
   height:auto;
   
 `

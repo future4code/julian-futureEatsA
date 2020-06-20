@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useReducer, useEffect } from 'react'
 import {Switch, Route, BrowserRouter} from 'react-router-dom'
 import HomeScreenPage from '../pages/HomeScreenPage'
 import LoginPage from '../pages/LoginPage'
@@ -11,9 +11,18 @@ import ProfilePage from '../pages/Profile/ProfilePage'
 import UpdateProfilePage from '../pages/Profile/UpdateProfilePage'
 import AddressPage from '../pages/AddressPage'
 import UpdateAdressPage from '../pages/Profile/UpdateAdressPage'
+import CartContext from '../contexts/CartContext'
 
 const Routes = ()=>{
+  const [state, dispatch] = useReducer()
+
+  
     return(
+      // <CartContext.Provider value={{
+      //   restaurants: state.restaurants,
+      //   cart: state.cart,
+      //   products: state.products,
+      //    dispatch: dispatch }}>
         <BrowserRouter>
         <Switch>
           <Route exact path='/'>
@@ -51,6 +60,7 @@ const Routes = ()=>{
           </Route>
         </Switch>
       </BrowserRouter>
+    // </CartContext.Provider>
     )
 }
 export default Routes

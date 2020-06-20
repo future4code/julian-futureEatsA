@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../../../components/Header';
-import maosanta from '../../img/mao-santa.jpg';
 import {ContainerRestaurant,
         MainPhoto,
         ImgRestaurant, 
@@ -24,9 +23,9 @@ import Footer from '../../../components/Footer';
 import Axios from 'axios';
 import { useParams } from 'react-router-dom';
 
-const Restaurant = ()=>{
+const Restaurant = (props)=>{
   const [restaurant, setRestaurante] = useState()
-  
+  const [products, setProducts] = useState([])
   const params = useParams()
 
   useEffect(()=>{
@@ -37,8 +36,15 @@ const Restaurant = ()=>{
       }
     }).then((response) => {
       setRestaurante(response.data.restaurant)
+      setProducts(response.data.restaurant.products)
     })
   }, [])
+
+  // addProductToCart = (productId) => {
+  //   const productInCart = this.state.productInCart.find(product => productId === product.id)
+
+  //   if(productInCart)
+  // }
 
     return(
         <div>
@@ -65,58 +71,20 @@ const Restaurant = ()=>{
                 <ContainerMainTitle>
                     <MainTitle>Principais</MainTitle>
                 </ContainerMainTitle>
-                
-                <Card>
-                  <ImgFood src={maosanta} alt=''/>
-                 <ContainerMainFood>
-                     <Title>Bullguer</Title>
-                     <Ingredients>Pão, carne. queijo, picles e molho.</Ingredients>
-                     <PriceAndButton>
-                     <Price>R$23,00</Price>
-                     <BotaoAdicionar variant="outlined" color="secondary" size='small'> adicionar</BotaoAdicionar>
-                     </PriceAndButton>
-                </ContainerMainFood>  
-                </Card>
-
-                <Card>
-                  <ImgFood src={maosanta} alt=''/>
-                 <ContainerMainFood>
-                     <Title>Stencil</Title>
-                     <Ingredients>Pão, carne. queijo, picles e molho.</Ingredients>
-                     <PriceAndButton>
-                     <Price>R$23,00</Price>
-                     <BotaoRemover variant="outlined" color="secondary" size='small'> Remover</BotaoRemover>
-                     </PriceAndButton>
-                </ContainerMainFood>  
-                </Card>
-
-                <ContainerMainTitle>
-                    <MainTitle>Acompanhamentos</MainTitle>
-                </ContainerMainTitle>
-
-                <Card>
-                  <ImgFood src={maosanta} alt=''/>
-                 <ContainerMainFood>
-                     <Title>Bullguer</Title>
-                     <Ingredients>Pão, carne. queijo, picles e molho.</Ingredients>
-                     <PriceAndButton>
-                     <Price>R$23,00</Price>
-                     <BotaoAdicionar variant="outlined" color="secondary" size='small'> adicionar</BotaoAdicionar>
-                     </PriceAndButton>
-                </ContainerMainFood>  
-                </Card>
-
-                <Card>
-                  <ImgFood src={maosanta} alt=''/>
-                 <ContainerMainFood>
-                     <Title>Bullguer</Title>
-                     <Ingredients>Pão, carne. queijo, picles e molho.</Ingredients>
-                     <PriceAndButton>
-                     <Price>R$23,00</Price>
-                     <BotaoAdicionar variant="outlined" color="secondary" size='small'> adicionar</BotaoAdicionar>
-                     </PriceAndButton>
-                </ContainerMainFood>  
-                </Card>
+            
+                {products.map((product) =>{
+                  return <Card>
+                    <ImgFood src={product.photoUrl} alt=''/>
+                   <ContainerMainFood>
+                       <Title>{product.name}</Title>
+                       <Ingredients>{product.description}</Ingredients>
+                       <PriceAndButton>
+                       <Price>{product.price}</Price>
+                       <BotaoAdicionar variant="outlined" color="secondary" size='small'>adicionar</BotaoAdicionar>
+                       </PriceAndButton>
+                  </ContainerMainFood>  
+                  </Card>
+                })}
                 <Footer />
                 
               
