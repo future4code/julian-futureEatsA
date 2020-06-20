@@ -12,6 +12,7 @@ import ActiveOrder from './ActiveOrder'
 import Button from '@material-ui/core/Button'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
+import {useForm} from '../../../hooks/useForm'
 
 
 const ContainerFeed = styled.div`
@@ -57,7 +58,10 @@ const Feed = () => {
     const token = localStorage.getItem('token')
     const history = useHistory()
     const [restaurants, setRestaurants] = useState([])
+    const [filtro, setFiltro] = useState("")
     const [mostraPedido, setMostraPedido] = useState(false)
+    const {form, onChange} = useForm({pesquisa: ''})
+    
 
     useEffect(() => {
         axios.get('https://us-central1-missao-newton.cloudfunctions.net/futureEatsA/restaurants', {
@@ -73,11 +77,14 @@ const Feed = () => {
         })
         verificaPedido()
     }, [])
-
+    
+    const onChangeForm = (event)=>{
+        const {name, value} = event.target
+        onChange(name, value)
+    }
     const IrparaRestaurantsDetails = (id) => {
         history.push(`/home/Restaurant/${id}`)
     }
-
     const verificaPedido = () => {
         axios
             .get('https://us-central1-missao-newton.cloudfunctions.net/futureEatsA/active-order',
@@ -99,6 +106,22 @@ const Feed = () => {
                 alert(error.message)
             })
     }
+    const restaurantsFiltrados = restaurants.filter((restaurant)=>{
+        if(restaurant.name.toUpperCase().includes(form.pesquisa.toUpperCase())){
+            return true
+        }
+    }).filter((restaurant)=>{
+        if(filtro===restaurant.category){
+            return true
+        }else{
+            return true
+        }
+ 
+    })
+
+    const filtroCategory = (category)=>{
+        setFiltro(category)
+    }
 
     setInterval(() => {
         verificaPedido()
@@ -111,6 +134,9 @@ const Feed = () => {
             <TextFieldStyled
                 placeholder="Restaurante"
                 variant="outlined"
+                name="pesquisa"
+                value={form.pesquisa}
+                onChange={onChangeForm}
                 InputProps={{
                     startAdornment: (
                         <InputAdornment position="start">
@@ -120,14 +146,12 @@ const Feed = () => {
                 }}
             />
             <ScrollVertical>
-                <ButtonStyled>Hamburguer</ButtonStyled>
-                <ButtonStyled>Asiática</ButtonStyled>
-                <ButtonStyled>Massas</ButtonStyled>
-                <ButtonStyled>Saudaveis</ButtonStyled>
-                <ButtonStyled>alguma coisa</ButtonStyled>
-                <ButtonStyled>Alguma coisa</ButtonStyled>
+                {restaurants.map(restaurant =>{
+                    return(<ButtonStyled onClick={()=>{filtroCategory(restaurant.category)}}>{restaurant.category}</ButtonStyled>)
+                })
+            }   
             </ScrollVertical>
-            {restaurants.map(restaurant => {
+            {restaurantsFiltrados.map(restaurant => {
                 return (
                     <CardStyled onClick={() => { IrparaRestaurantsDetails(restaurant.id) }}>
                         <CardMediaStyled
