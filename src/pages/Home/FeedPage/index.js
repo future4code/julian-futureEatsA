@@ -115,13 +115,8 @@ const Feed = () => {
             return true
         }
  
-    }).filter((restaurant)=>{
-        if(filtro===restaurant.category){
-            return true
-        }else{
-            return true
-        }
     })
+
     const filtroCategory = (category)=>{
         setFiltro(category)
     }
