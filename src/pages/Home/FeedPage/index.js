@@ -107,17 +107,20 @@ const Feed = () => {
     const restaurantsFiltrados = restaurants.filter((restaurant)=>{
         if(restaurant.name.toUpperCase().includes(form.pesquisa.toUpperCase())){
             return true
-        }else if(form.pesquisa === ""){
-            return true
         }
-    })
-    .filter((restaurant)=>{
+    }).filter((restaurant)=>{
         if(filtro===restaurant.category){
             return true
         }else{
             return true
         }
  
+    }).filter((restaurant)=>{
+        if(filtro===restaurant.category){
+            return true
+        }else{
+            return true
+        }
     })
     const filtroCategory = (category)=>{
         setFiltro(category)
