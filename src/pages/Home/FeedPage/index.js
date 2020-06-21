@@ -12,7 +12,7 @@ import ActiveOrder from './ActiveOrder'
 import Button from '@material-ui/core/Button'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
-import {useForm} from '../../../hooks/useForm'
+import { useForm } from '../../../hooks/useForm'
 
 
 const ContainerFeed = styled.div`
@@ -21,6 +21,16 @@ const ContainerFeed = styled.div`
     flex-direction: column;
     align-items: center;
 `
+
+const ContainerRestaurants = styled.div`
+    min-height:80vh;
+    width:100%;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    padding-top: 3vh;
+`
+
 const TextFieldStyled = styled(TextField)`
     width: 90%;
 `
@@ -60,8 +70,8 @@ const Feed = () => {
     const [restaurants, setRestaurants] = useState([])
     const [filtro, setFiltro] = useState("")
     const [mostraPedido, setMostraPedido] = useState(false)
-    const {form, onChange} = useForm({pesquisa: ''})
-    
+    const { form, onChange } = useForm({ pesquisa: '' })
+
 
     useEffect(() => {
         axios.get('https://us-central1-missao-newton.cloudfunctions.net/futureEatsA/restaurants', {
@@ -77,9 +87,9 @@ const Feed = () => {
         })
         verificaPedido()
     }, [])
-    
-    const onChangeForm = (event)=>{
-        const {name, value} = event.target
+
+    const onChangeForm = (event) => {
+        const { name, value } = event.target
         onChange(name, value)
     }
     const IrparaRestaurantsDetails = (id) => {
@@ -106,31 +116,32 @@ const Feed = () => {
                 alert(error.message)
             })
     }
-    const restaurantsFiltrados = restaurants.filter((restaurant)=>{
-        if(restaurant.name.toUpperCase().includes(form.pesquisa.toUpperCase())){
+    const restaurantsFiltrados = restaurants.filter((restaurant) => {
+        if (restaurant.name.toUpperCase().includes(form.pesquisa.toUpperCase())) {
             return true
         }
-    }).filter((restaurant)=>{
-        if(filtro===restaurant.category){
+    }).filter((restaurant) => {
+        if (filtro === restaurant.category) {
             return true
-        }else{
+        } else {
             return true
         }
- 
+
     })
 
-    const filtroCategory = (category)=>{
+    const filtroCategory = (category) => {
         setFiltro(category)
     }
 
     setInterval(() => {
         verificaPedido()
         console.log("setIntervalexec")
-      }, 120000);
+    }, 120000);
 
     return (
         <ContainerFeed>
             <Header nomeDaPagina={'Labenu Eats'} />
+            <ContainerRestaurants>
             <TextFieldStyled
                 placeholder="Restaurante"
                 variant="outlined"
@@ -146,28 +157,30 @@ const Feed = () => {
                 }}
             />
             <ScrollVertical>
-                {restaurants.map(restaurant =>{
-                    return(<ButtonStyled onClick={()=>{filtroCategory(restaurant.category)}}>{restaurant.category}</ButtonStyled>)
+                {restaurants.map(restaurant => {
+                    return (<ButtonStyled onClick={() => { filtroCategory(restaurant.category) }}>{restaurant.category}</ButtonStyled>)
                 })
-            }   
+                }
             </ScrollVertical>
-            {restaurantsFiltrados.map(restaurant => {
-                return (
-                    <CardStyled onClick={() => { IrparaRestaurantsDetails(restaurant.id) }}>
-                        <CardMediaStyled
-                            image={restaurant.logoUrl}
-                            title="Contemplative Reptile"
-                        />
-                        <CardContent>
-                            <p>{restaurant.name}</p>
-                            <ContainerPrecoDinheiro>
-                                <p>{restaurant.deliveryTime} min</p>
-                                <p>frete R${restaurant.shipping}.00</p>
-                            </ContainerPrecoDinheiro>
-                        </CardContent>
-                    </CardStyled>
-                )
-            })}
+            
+                {restaurantsFiltrados.map(restaurant => {
+                    return (
+                        <CardStyled onClick={() => { IrparaRestaurantsDetails(restaurant.id) }}>
+                            <CardMediaStyled
+                                image={restaurant.logoUrl}
+                                title="Contemplative Reptile"
+                            />
+                            <CardContent>
+                                <p>{restaurant.name}</p>
+                                <ContainerPrecoDinheiro>
+                                    <p>{restaurant.deliveryTime} min</p>
+                                    <p>frete R${restaurant.shipping}.00</p>
+                                </ContainerPrecoDinheiro>
+                            </CardContent>
+                        </CardStyled>
+                    )
+                })}
+            </ContainerRestaurants>
             {mostraPedido ? (<ActiveOrder />) : (<></>)}
             <Footer />
         </ContainerFeed>
