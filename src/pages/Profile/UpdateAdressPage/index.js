@@ -9,6 +9,7 @@ import {ContainerUpdateProfile,
         ButtonStyled} from './style';
 
 
+
 const UpdateAdressPage = ()=>{
     const history = useHistory();
     const {form, onChange} = useForm({rua:'', numero: '', complemento: '', bairro: '', cidade: '', estado: ''})
@@ -48,7 +49,7 @@ const UpdateAdressPage = ()=>{
         axios
         .get('https://us-central1-missao-newton.cloudfunctions.net/futureEatsA/profile/address', {
             headers: {
-                'auth': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IlVrdmxjTjJ3RkwxdFEzYzJiNEliIiwibmFtZSI6Im1lbDMiLCJlbWFpbCI6Im1lbDNAZ21haWwuY29tIiwiY3BmIjoiNDQ0LjQ0NC40NDQtNDQ0IiwiaGFzQWRkcmVzcyI6ZmFsc2UsImlhdCI6MTU5MjU5MjU3OH0.KKvt6ZinPvqN904FzcmcTzzajEhI83Q6G0GtbELo9ok'
+                'auth': token
             }
         })
         .then((response) => {
@@ -74,24 +75,19 @@ const UpdateAdressPage = ()=>{
         event.preventDefault();
       };
 
-      
 
     return(
         <ContainerUpdateProfile>
-            <Header/>
+            <Header nomeDaPagina={"Endereço"}/>
             <FormStyled onSubmit={handleSubmit}>
-                
+
                 <TextFieldStyled
-                    
                     name='rua'
                     value={form.rua}
                     onChange={onChangeForm}
                     variant="outlined"
                     label="Rua"
                     required
-                    // inputProps={{
-                    //     pattern: 
-                    // }}
                     />
                 <TextFieldStyled
                     name='numero'
