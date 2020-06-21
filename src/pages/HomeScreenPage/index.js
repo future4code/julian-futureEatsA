@@ -30,7 +30,7 @@ const Eats = styled.h1`
 
 const HomeScreenPage = () => {
     const history = useHistory();
-    setInterval(() => {
+    setTimeout(() => {
         history.push("/login")
       }, 2000);
     return (
