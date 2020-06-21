@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../../../components/Header';
-import maosanta from '../../img/mao-santa.jpg';
+
 import {ContainerRestaurant,
         MainPhoto,
         ImgRestaurant, 
@@ -67,7 +67,7 @@ const Restaurant = ()=>{
                 </ContainerMainTitle>
                 
                 <Card>
-                  <ImgFood src={maosanta} alt=''/>
+                  {/* <ImgFood src={maosanta} alt=''/> */}
                  <ContainerMainFood>
                      <Title>Bullguer</Title>
                      <Ingredients>Pão, carne. queijo, picles e molho.</Ingredients>
@@ -79,7 +79,7 @@ const Restaurant = ()=>{
                 </Card>
 
                 <Card>
-                  <ImgFood src={maosanta} alt=''/>
+                  {/* <ImgFood src={maosanta} alt=''/> */}
                  <ContainerMainFood>
                      <Title>Stencil</Title>
                      <Ingredients>Pão, carne. queijo, picles e molho.</Ingredients>
@@ -95,7 +95,7 @@ const Restaurant = ()=>{
                 </ContainerMainTitle>
 
                 <Card>
-                  <ImgFood src={maosanta} alt=''/>
+                  {/* <ImgFood src={maosanta} alt=''/> */}
                  <ContainerMainFood>
                      <Title>Bullguer</Title>
                      <Ingredients>Pão, carne. queijo, picles e molho.</Ingredients>
@@ -107,7 +107,7 @@ const Restaurant = ()=>{
                 </Card>
 
                 <Card>
-                  <ImgFood src={maosanta} alt=''/>
+                  {/* <ImgFood src={maosanta} alt=''/> */}
                  <ContainerMainFood>
                      <Title>Bullguer</Title>
                      <Ingredients>Pão, carne. queijo, picles e molho.</Ingredients>

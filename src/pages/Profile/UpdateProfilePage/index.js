@@ -1,40 +1,15 @@
 import React from 'react'
 import Header from '../../../components/Header'
-import styled from 'styled-components'
-import TextField from '@material-ui/core/TextField'
-import Button from '@material-ui/core/Button'
 import {useForm} from '../../../hooks/useForm'
 import axios from 'axios'
 import {useHistory} from 'react-router-dom'
 import { cpfMask } from '../../../components/mask'
+import {ContainerUpdateProfile,
+        TextFieldStyled,
+        FormStyled,
+        ButtonStyled} from './style'
 
-const ContainerUpdateProfile = styled.div`
-    width: 100vw;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-`
-const TextFieldStyled = styled(TextField)`
-    width: 90%;
-`
-const FormStyled = styled.form`
-    width: 100%;
-    display: flex; 
-    flex-direction: column;
-    align-items: center;
-    height: 300px;
-    justify-content: space-around;
-`
-const ButtonStyled = styled(Button)`
-    width: 90%;
-    height: 42px;
-    &&{
-        background-color: #5cb646;
-        :focus{
-            background-color: #5cb646;
-        }
-    }
-`
+
 
 const UpdateProfile = ()=>{
     const history = useHistory()

@@ -1,46 +1,20 @@
-import React, {useEffect, useState} from 'react'
-import styled from 'styled-components'
+import React, {useEffect} from 'react'
 import Header from '../../../components/Header'
-import TextField from '@material-ui/core/TextField'
-import Button from '@material-ui/core/Button'
 import axios from 'axios';
 import {useHistory} from 'react-router-dom';
 import {useForm} from '../../../hooks/useForm'
+import {ContainerUpdateProfile,
+        FormStyled,
+        TextFieldStyled,
+        ButtonStyled} from './style';
 
 
-const ContainerUpdateProfile = styled.div`
-    display: flex; 
-    flex-direction: column;
-    align-items: center;
-`
-const FormStyled = styled.form`
-    width: 100%;
-    display: flex; 
-    flex-direction: column;
-    align-items: center;
-    height: 500px;
-    justify-content: space-around;
-`
-const TextFieldStyled = styled(TextField)`
-    width: 90%;
-`
-const ButtonStyled = styled(Button)`
-    width: 90%;
-    height: 42px;
-    &&{
-        background-color: #5cb646;
-        :focus{
-            background-color: #5cb646;
-        }
-    }
-
-`
 const UpdateAdressPage = ()=>{
     const history = useHistory();
     const {form, onChange} = useForm({rua:'', numero: '', complemento: '', bairro: '', cidade: '', estado: ''})
     const token = localStorage.getItem('token')
 
-    const[editarEndereco, setEditarEndereço] = useState({number:''})
+    
     
     const onChangeForm = event =>{
         const {name, value} = event.target
@@ -100,15 +74,13 @@ const UpdateAdressPage = ()=>{
         event.preventDefault();
       };
 
-      const teste = () => {
-        console.log(editarEndereco)
-      }
+      
 
     return(
         <ContainerUpdateProfile>
             <Header/>
             <FormStyled onSubmit={handleSubmit}>
-                <button onClick={teste}>api</button>
+                
                 <TextFieldStyled
                     
                     name='rua'
