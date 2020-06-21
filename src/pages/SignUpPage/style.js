@@ -12,12 +12,12 @@ export const Input = styled(TextField)`
 `
 export const Botao = styled(Button)`
   &&{
-    background-color: #5cb646;
-  color: black;
-  font-size: 16px;
-  margin-top: 1rem;
-  margin-left: 10px;
-  margin-right: 10px;
+      background-color: #5cb646;
+      color: black;
+      font-size: 16px;
+      margin-top: 1rem;
+      margin-left: 10px;
+      margin-right: 10px;
   }
 `
 

@@ -71,6 +71,60 @@ const Restaurant = (props)=>{
                 <ContainerMainTitle>
                     <MainTitle>Principais</MainTitle>
                 </ContainerMainTitle>
+
+                
+                <Card>
+                  {/* <ImgFood src={maosanta} alt=''/> */}
+                 <ContainerMainFood>
+                     <Title>Bullguer</Title>
+                     <Ingredients>Pão, carne. queijo, picles e molho.</Ingredients>
+                     <PriceAndButton>
+                     <Price>R$23,00</Price>
+                     <BotaoAdicionar variant="outlined" color="secondary" size='small'> adicionar</BotaoAdicionar>
+                     </PriceAndButton>
+                </ContainerMainFood>  
+                </Card>
+
+                <Card>
+                  {/* <ImgFood src={maosanta} alt=''/> */}
+                 <ContainerMainFood>
+                     <Title>Stencil</Title>
+                     <Ingredients>Pão, carne. queijo, picles e molho.</Ingredients>
+                     <PriceAndButton>
+                     <Price>R$23,00</Price>
+                     <BotaoRemover variant="outlined" color="secondary" size='small'> Remover</BotaoRemover>
+                     </PriceAndButton>
+                </ContainerMainFood>  
+                </Card>
+
+                <ContainerMainTitle>
+                    <MainTitle>Acompanhamentos</MainTitle>
+                </ContainerMainTitle>
+
+                <Card>
+                  {/* <ImgFood src={maosanta} alt=''/> */}
+                 <ContainerMainFood>
+                     <Title>Bullguer</Title>
+                     <Ingredients>Pão, carne. queijo, picles e molho.</Ingredients>
+                     <PriceAndButton>
+                     <Price>R$23,00</Price>
+                     <BotaoAdicionar variant="outlined" color="secondary" size='small'> adicionar</BotaoAdicionar>
+                     </PriceAndButton>
+                </ContainerMainFood>  
+                </Card>
+
+                <Card>
+                  {/* <ImgFood src={maosanta} alt=''/> */}
+                 <ContainerMainFood>
+                     <Title>Bullguer</Title>
+                     <Ingredients>Pão, carne. queijo, picles e molho.</Ingredients>
+                     <PriceAndButton>
+                     <Price>R$23,00</Price>
+                     <BotaoAdicionar variant="outlined" color="secondary" size='small'> adicionar</BotaoAdicionar>
+                     </PriceAndButton>
+                </ContainerMainFood>  
+                </Card>
+
             
                 {products.map((product) =>{
                   return <Card>
@@ -85,6 +139,7 @@ const Restaurant = (props)=>{
                   </ContainerMainFood>  
                   </Card>
                 })}
+
                 <Footer />
                 
               
