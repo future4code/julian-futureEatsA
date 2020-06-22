@@ -51,21 +51,21 @@ const Restaurant = (props)=>{
             {restaurant ? <ContainerRestaurant>
               <Header/>
               <MainPhoto>
-                  <ImgRestaurant src={restaurant.logoUrl} alt=''/>
+                  <ImgRestaurant src={props.restaurant.logoUrl} alt=''/>
               </MainPhoto>
                 
                 <ContainerTitle>
-                  <Title>{restaurant.name}</Title>
-                  <Paragraph>{restaurant.category}</Paragraph>
+                  <Title>{props.restaurant.name}</Title>
+                  <Paragraph>{props.restaurant.category}</Paragraph>
                 </ContainerTitle>
 
                 <ContainerTime>
-                  <Paragraph>{restaurant.deliveryTime}</Paragraph>
-                  <Paragraph>{restaurant.shipping}</Paragraph>
+                  <Paragraph>{props.restaurant.deliveryTime}</Paragraph>
+                  <Paragraph>{props.restaurant.shipping}</Paragraph>
                 </ContainerTime>
 
                 <ContainerAddress>
-                 <Paragraph>{restaurant.address}</Paragraph>
+                 <Paragraph>{props.restaurant.address}</Paragraph>
                 </ContainerAddress>
 
                 <ContainerMainTitle>
